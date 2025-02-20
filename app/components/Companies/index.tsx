@@ -1,29 +1,36 @@
 "use client"
 import React, { Component } from "react";
 import Slider from "react-slick";
-
+import Image from "next/image";
 // IMAGES DATA FOR CAROUSEL
 interface Data {
+    id: number;
     imgSrc: string;
 }
 
 const data: Data[] = [
     {
+        id: 1,
         imgSrc: "/images/Companies/birdseye.svg"
     },
     {
+        id: 2,
         imgSrc: "/images/Companies/break.svg"
     },
     {
+        id: 3,
         imgSrc: "/images/Companies/keddar.svg"
     },
     {
+        id: 4,
         imgSrc: "/images/Companies/shield.svg"
     },
     {
+        id: 5,
         imgSrc: "/images/Companies/tandov.svg"
     },
     {
+        id: 6,
         imgSrc: "/images/Companies/tree.svg"
     },
 ]
@@ -79,9 +86,9 @@ export default class MultipleItems extends Component {
                 <div className="mx-auto max-w-2xl py-16 px-4s sm:px-6 lg:max-w-7xl lg:px-8">
                     <div>
                         <Slider {...settings}>
-                            {data.map((item, i) =>
-                                <div key={i}>
-                                    <img src={item.imgSrc} alt={item.imgSrc} />
+                            {data.map((item) =>
+                                <div key={item.id}>
+                                    <Image src={item.imgSrc} alt={item.imgSrc} width={100} height={100} />
                                 </div>
                             )}
                         </Slider>

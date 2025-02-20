@@ -19,6 +19,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="es">
+
+      <head>
+        <link
+          href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap"
+          rel="stylesheet"
+        />
+      </head>
       <body>
         <Navbar />
         {children}

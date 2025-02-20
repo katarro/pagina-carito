@@ -2,8 +2,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import "slick-carousel/slick/slick.css";
-@import "slick-carousel/slick/slick-theme.css";
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
 
 
 body {
@@ -34,6 +33,9 @@ html:not([data-scroll="0"]) .navbar {
 .navbutton {
   background: linear-gradient(90deg, #BD24DF 0%, #2D6ADE 97.15%);
   border-radius: 10px;
+}
+.navcolor {
+  background: linear-gradient(10deg, #BD24DF 0%, #2D6ADE 97.15%);
 }
 
 .navbutton:hover {
@@ -141,9 +143,9 @@ html:not([data-scroll="0"]) .navbar {
 
 .card-b:hover {
   filter: drop-shadow(0px 20px 5px rgba(0, 0, 0, 0.1));
-  transform: scale(1.05);
+  /* transform: scale(1.05); */
   border: 1px solid #BD24DF;
-  height: 360px;
+  /* height: 360px; */
 }
 
 .hides {
@@ -367,10 +369,11 @@ th:last-child {
   filter: blur(392px);
   border-radius: 508.5px;
   width: 51rem;
-  height: 50rem;
-  right: -13%;
-  top: 50%;
+  height: 60rem;
+  /* right: -13%; */
+  /* top: 50%; */
 }
+
 
 .radial-banner {
   position: absolute;
@@ -388,12 +391,27 @@ th:last-child {
 .radial-bg {
   position: absolute;
   background: linear-gradient(90deg, #BD24DF 0%, #2D6ADE 97.15%);
+  opacity: 0.5; /* Cambiado de 1.5 a 0.5 ya que la opacidad no puede ser mayor a 1 */
+  filter: blur(150px); /* Reducido para evitar desbordamiento */
+  border-radius: 508px;
+  width: 100%; /* Cambiado de 60rem a 100% */
+  height: 100%; /* Cambiado de 40rem a 100% */
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: -1;
+  overflow: hidden; /* Añadido para contener el blur */
+}
+
+/* .radial-bg {
+  position: absolute;
+  background: linear-gradient(90deg, #BD24DF 0%, #2D6ADE 97.15%);
   opacity: 1.5;
   filter: blur(392px);
-  border-radius: 508.5px;
-  width: 51rem;
-  height: 25rem;
-  left: -383px;
+  border-radius: 508px;
+  width: 60rem;
+  height: 40rem;
   top: 0%;
   z-index: -1;
-}
+} */
+

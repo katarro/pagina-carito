@@ -9,6 +9,7 @@ interface ProductType {
 }
 
 interface Social {
+  id: number;
   imgsrc: string,
   href: string,
 }
@@ -22,39 +23,91 @@ const products: ProductType[] = [
 ]
 
 const socialLinks: Social[] = [
-  { imgsrc: '/images/Footer/insta.svg', href: "https://instagram.com/" },
-  { imgsrc: '/images/Footer/dribble.svg', href: "https://dribble.com/" },
-  { imgsrc: '/images/Footer/twitter.svg', href: "https://twitter.com/" },
-  { imgsrc: '/images/Footer/youtube.svg', href: "https://youtube.com/" },
+  { id: 1, imgsrc: '/images/Footer/insta.svg', href: "https://www.instagram.com/caar0o._/" },
+  // { imgsrc: '/images/Footer/dribble.svg', href: "https://dribble.com/" },
+  // { imgsrc: '/images/Footer/twitter.svg', href: "https://twitter.com/" },
+  // { imgsrc: '/images/Footer/youtube.svg', href: "https://youtube.com/" },
 ]
 
 
-const footer = () => {
+
+const Footer = () => {
   return (
-    <div className=" relative">
-      <div className="radial-bg hidden lg:block"></div>
-      <div className="mx-auto max-w-2xl mt-64 pb-16 px-4 sm:px-6 lg:max-w-7xl lg:px-8">
-        <div className="mt-24 grid grid-cols-1 gap-y-10 gap-x-16 sm:grid-cols-2 lg:grid-cols-12 xl:gap-x-8">
+    <footer className="relative w-full overflow-hidden">
+      {/* Fondo radial */}
+      <div className="radial-bg hidden lg:block absolute top-0 left-0 w-full h-full"></div>
 
-          {/* COLUMN-1 */}
-
-          <div className='col-span-6'>
-            <img
-              className="block h-12 w-20px mb-4"
-              src={'/images/Logo/logo.svg'}
+      {/* Contenedor principal */}
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 md:px-6 lg:px-8 pt-8 md:pt-12">
+        <div className="flex flex-col items-center">
+          {/* Logo */}
+          <div className="w-full max-w-[200px] relative aspect-[2.5/1] mb-4">
+            <Image
+              src="/images/Logo/logo2.png"
               alt="Crypto-Logo"
+              fill
+              className="object-contain"
+              sizes="(max-width: 200px) 100vw, 200px"
             />
-            <h3 className='text-lightblue text-sm font-normal leading-9 mb-4 lg:mb-16'> Cryptocurrency is a type of virtual currency that uses cryptography to secure transactions that are digitally recorded on a distributed ledger, such as a blockchain.</h3>
-            <div className='flex gap-4'>
-              {socialLinks.map((items, i) => (
-                <Link href={items.href} key={i}><img src={items.imgsrc} alt={items.imgsrc} className='footer-icons' /></Link>
-              ))}
-            </div>
           </div>
 
-          {/* CLOUMN-2/3 */}
+          {/* Texto descriptivo */}
+          <p className="text-lightblue text-sm md:text-base font-normal leading-relaxed mb-8 md:mb-10 max-w-2xl text-center px-4">
+            Disfruta de la experiencia de un retrato de tu mascota hecho con
+            dedicación y detalle. En cada pincelada, capturamos la esencia y
+            alegría de tu fiel amigo para convertirlo en una obra de arte
+            única.
+          </p>
 
-          {products.map((product) => (
+          {/* Íconos de redes sociales */}
+          <div className="flex flex-wrap justify-center gap-4 mb-8">
+            {socialLinks.map((item) => (
+              <Link 
+                href={item.href} 
+                key={item.id}
+                className="transition-transform hover:scale-110"
+              >
+                <div className="relative w-[30px] h-[24px]">
+                  <Image
+                    src={item.imgsrc}
+                    alt={item.imgsrc}
+                    fill
+                    className="object-contain footer-icons"
+                    sizes="30px"
+                  />
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Derechos reservados */}
+      <div className="w-full border-t border-t-lightblue">
+        <div className="max-w-7xl mx-auto px-4 py-6">
+          <p className="text-offwhite text-sm md:text-base text-center">
+            @2025 - Todos los derechos reservados por{" "}
+            <Link 
+              href="https://github.com/katarro/" 
+              target="_blank"
+              className="hover:text-lightblue transition-colors"
+            >
+              ❤️ fcastro
+            </Link>
+          </p>
+        </div>
+      </div>
+    </footer>
+  );
+};
+
+export default Footer;
+
+
+
+{/* CLOUMN-2/3 
+
+ {products.map((product) => (
             <div key={product.id} className="group relative col-span-2">
               <p className="text-white text-xl font-medium mb-9">{product.section}</p>
               <ul>
@@ -65,26 +118,11 @@ const footer = () => {
                 ))}
               </ul>
             </div>
-          ))}
+          ))} 
 
-          <div className="col-span-4">
+ <div className="col-span-4">
             <h3 className="text-white text-xl font-medium mb-9">Contact Us</h3>
             <h4 className="text-offwhite text-sm font-normal mb-6 flex gap-2"><Image src={'/images/Footer/number.svg'} alt="number-icon" width={20} height={20} />(406) 555-012</h4>
             <h4 className="text-offwhite text-sm font-normal mb-6 flex gap-2"><Image src={'/images/Footer/email.svg'} alt="email-icon" width={20} height={20} />tim.jennings@example.com</h4>
             <h4 className="text-offwhite text-sm font-normal mb-6 flex gap-2"><Image src={'/images/Footer/address.svg'} alt="address-icon" width={20} height={20} />Elgin St. Celina, Delaware 10299</h4>
-          </div>
-
-        </div>
-      </div>
-
-      {/* All Rights Reserved */}
-
-      <div className='py-8 px-4 border-t border-t-lightblue'>
-        <h3 className='text-center text-offwhite'>@2023 - All Rights Reserved by <Link href="https://adminmart.com/" target="_blank"> Adminmart.com</Link></h3>
-      </div>
-
-    </div>
-  )
-}
-
-export default footer;
+          </div> */}
